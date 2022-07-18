@@ -12,8 +12,6 @@ const poll = {
         `${this.question}\n${this.options.join("\n")}\n(Write option number)`
       )
     );
-    this.displayResults();
-    this.displayResults("string");
 
     // console.log(anwser);
 
@@ -21,14 +19,16 @@ const poll = {
     typeof anwser == "number" &&
       anwser < this.anwsers.length &&
       this.anwsers[anwser]++;
+    this.displayResults();
+    this.displayResults("string");
 
-    console.log(this.anwsers);
+    // console.log(this.anwsers);
   },
 
   displayResults(type = "array") {
-    if (type == "array") {
+    if (type === "array") {
       console.log(this.anwsers);
-    } else if (type == "string") {
+    } else if (type === "string") {
       console.log(`Poll results are ${this.anwsers.join(", ")}`);
     }
   },
@@ -39,3 +39,6 @@ const poll = {
 document
   .querySelector(".poll")
   .addEventListener("click", poll.registerNewAnwser.bind(poll));
+
+poll.displayResults.call({ anwsers: [5, 2, 3] }, "string");
+poll.displayResults.call({ anwsers: [1, 5, 3, 9, 6, 1] }, "string");
