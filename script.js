@@ -15,7 +15,16 @@ const poll = {
     console.log(anwser);
 
     //Register the anwser
+    typeof anwser == "number" &&
+      anwser < this.anwsers.length &&
+      this.anwsers[anwser]++;
+
+    console.log(this.anwsers);
   },
 };
 
-poll.registerNewAnwser();
+// poll.registerNewAnwser();
+
+document
+  .querySelector(".poll")
+  .addEventListener("click", poll.registerNewAnwser.bind(poll));
