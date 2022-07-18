@@ -12,7 +12,10 @@ const poll = {
         `${this.question}\n${this.options.join("\n")}\n(Write option number)`
       )
     );
-    console.log(anwser);
+    this.displayResults();
+    this.displayResults("string");
+
+    // console.log(anwser);
 
     //Register the anwser
     typeof anwser == "number" &&
@@ -20,6 +23,14 @@ const poll = {
       this.anwsers[anwser]++;
 
     console.log(this.anwsers);
+  },
+
+  displayResults(type = "array") {
+    if (type == "array") {
+      console.log(this.anwsers);
+    } else if (type == "string") {
+      console.log(`Poll results are ${this.anwsers.join(", ")}`);
+    }
   },
 };
 
